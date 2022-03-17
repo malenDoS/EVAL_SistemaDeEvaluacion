@@ -29,12 +29,17 @@ class BaseDatos{
             
             //Establezco la sesión.
             session_start();
-            $_SESSION["Tipo"]=$tipoUsuario;
+            
+            if($tipoUsuario=="si"){
+            $_SESSION["Tipo"]="Admin";
+            }else{
+                $_SESSION["Tipo"]="Profesor";
+            }
             //Redirecciono al usuario.
             header("location:../Vista/MenuDeOpciones.php");
             
         }else{
-            echo"No se han encontrado datos";
+            header("location:../Vista/Formulario de entrada.php?datos=no");
         }
     }
 }

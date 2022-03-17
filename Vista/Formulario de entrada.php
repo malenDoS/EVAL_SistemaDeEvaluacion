@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 
 <html>
     <head>
@@ -10,18 +9,9 @@
     </head>
     <body class="container">
         <!--Contenedor principal-->
-        <div id="cabecera" class="row">
-            <div id="cLogo" class="col-md-1 col-sm-1 col-1">
-                <img id="logo"  src="imagenes/iconoEval.png">
-                
-            </div>
-            <div id="cTexto" class="offset-4 col-md-2 col-sm-2 col-2">
-                <img id="texto" src="imagenes/texto.png">
-            </div>
-            <div id="textoSecundario" class="col-md-2 col-sm-2 offset-md-3 col-2 offset-3 offset-sm-3">
-                 <img id="txtSC" src="imagenes/textoSecundario.png">
-            </div>
-        </div>
+        <?php
+        include("Cabecera.html");
+        ?>
         
         <!--Formulario-->
         <div id="contenedor" class="row">
@@ -34,16 +24,19 @@
                 <label for="contrasegna" class="form-control">Contraseña</label><input id="contra" type="password" class="form-control" name="contrasegna">
                 </div>
                 <input type="submit" id="login" class="form-control"><label for="sesion"  class="recordar">Recordar:</label> <input type="checkbox" id="recordar">
-                <p id="fraseValidacion"></p>
+                <p id="fraseValidacion"><?php if(isset($_GET["datos"])){
+                echo"Datos no encontrados";}?></p>
+                }
             </form>
         </div>
         </div>
         
        
         
-        <div id="footer" class="row text-center p-3">
-            <p><u>EVAL</u>: SISTEMA DE EVALUACIÓN</p>
-        </div>
+        <!--Footer-->
+        <?php
+        include("pieDePagina.html");
+        ?>
         <script type="text/javascript" src="../librerías/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="../librerías/bootstrap.min.js"></script>
         <script type="text/javascript" src="validaFormulario.js"></script>

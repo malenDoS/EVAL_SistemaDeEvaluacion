@@ -10,20 +10,29 @@
     <body class="container">
         <!--Contenedor principal-->
         <?php
+        //Compruebo si se ha pulsado el botón de enviar del formulario.
+        if(isset($_POST["enviar"])){
+            include("../Controlador/RecopilarDatos.php");
+            //Guardo los datos.
+           $correo=$_POST["correo"];
+           $contrasegna=$_POST["contrasegna"];
+           $entrada=new RecopilarDatos();
+           $entrada->comprobarDatosFormulario($correo,$contrasegna);
+        }
         include("Cabecera.html");
         ?>
         
         <!--Formulario-->
         <div id="contenedor" class="row">
             <div id="cFormulario" class="col-md-4 offset-md-4">
-            <form id="formulario" method="post" action="../Controlador/Comprobar.php">
+            <form id="formulario" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
                 <div class="input-group">
                 <label for="email" class="form-control">Email:</label><input id="mail" type="text" class="form-control" name="correo">
                 </div>
                 <div class="input-group">
                 <label for="contrasegna" class="form-control">Contraseña</label><input id="contra" type="password" class="form-control" name="contrasegna">
                 </div>
-                <input type="submit" id="login" class="form-control"><label for="sesion"  class="recordar">Recordar:</label> <input type="checkbox" id="recordar">
+                <input type="submit" id="login" name="enviar" class="form-control"><label for="sesion"  class="recordar">Recordar:</label> <input type="checkbox" id="recordar">
                 <p id="fraseValidacion"><?php if(isset($_GET["datos"])){
                 echo"Datos no encontrados";}?></p>
                 }

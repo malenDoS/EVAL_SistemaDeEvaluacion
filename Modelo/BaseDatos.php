@@ -8,9 +8,10 @@ class BaseDatos{
         $this->conexion=$conexion;
     }
     
+    //Evalúa si el usuario está registrado.
     function loginInicial($correo,$password){
         //Guardo en una variable la consulta con marcadores.
-        $consulta="SELECT Admin FROM registrados WHERE Email=:correo AND contrasegna=:contra";
+        $consulta="SELECT Admin,ID FROM registrados WHERE Email=:correo AND contrasegna=:contra";
         //Preparo la consulta.
         $resultado=$this->conexion->prepare($consulta);
         //Vinculo los marcadores.
@@ -25,6 +26,7 @@ class BaseDatos{
             $tipoUsuario;
             while($fila=$resultado->fetch(PDO::FETCH_ASSOC)){
                 $tipoUsuario=$fila["Admin"];
+                $idUsuario=$fila["ID"];
             }
             
             //Establezco la sesión.
@@ -36,11 +38,21 @@ class BaseDatos{
                 $_SESSION["Tipo"]="Profesor";
             }
             //Redirecciono al usuario.
-            header("location:../Vista/MenuDeOpciones.php");
+            header("location:../Vista/MenuDeOpciones.php?numero=".$idUsuario);
             
         }else{
             header("location:../Vista/Formulario de entrada.php?datos=no");
         }
+    }
+    
+    function datosMenu($idUsuario){
+        $consulta="SELECT nombre,apellido,cargo FROM Personal WHERE ID=:id";
+        $resultado=$this->conexion->prepare($consulta);
+        //Vinculo el marcador.
+        $resultado->bindValue(":id",$idUsuario);
+        $resultado->execute();
+        return $resultado;
+        
     }
 }
 

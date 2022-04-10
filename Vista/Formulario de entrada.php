@@ -4,22 +4,22 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../librerías/bootstrap.min.css">
-        <link rel="stylesheet" href="estiloFormulario.css">
+        <link rel="stylesheet" href="librerías/bootstrap.min.css">
+        <link rel="stylesheet" href="css/estiloFormulario.css">
     </head>
     <body class="container">
         <!--Contenedor principal-->
         <?php
         //Compruebo si se ha pulsado el botón de enviar del formulario.
         if(isset($_POST["enviar"])){
-            include("../Controlador/RecopilarDatos.php");
+            include("../Controlador/Registrado.php");
             //Guardo los datos.
            $correo=$_POST["correo"];
            $contrasegna=$_POST["contrasegna"];
-           $entrada=new RecopilarDatos();
-           $entrada->comprobarDatosFormulario($correo,$contrasegna);
+           $entrada=new Registrado();
+           $entrada->comprobarRegistro($correo,$contrasegna);
         }
-        include("Cabecera.html");
+        include("comunes/Cabecera.html");
         ?>
         
         <!--Formulario-->
@@ -35,7 +35,7 @@
                 <input type="submit" id="login" name="enviar" class="form-control"><label for="sesion"  class="recordar">Recordar:</label> <input type="checkbox" id="recordar">
                 <p id="fraseValidacion"><?php if(isset($_GET["datos"])){
                 echo"Datos no encontrados";}?></p>
-                }
+                
             </form>
         </div>
         </div>
@@ -44,10 +44,10 @@
         
         <!--Footer-->
         <?php
-        include("pieDePagina.html");
+        include("comunes/pieDePagina.html");
         ?>
-        <script type="text/javascript" src="../librerías/jquery-3.6.0.min.js"></script>
-        <script type="text/javascript" src="../librerías/bootstrap.min.js"></script>
-        <script type="text/javascript" src="validaFormulario.js"></script>
+        <script type="text/javascript" src="librerías/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="librerías/bootstrap.min.js"></script>
+        <script type="text/javascript" src="javascript/validaFormulario.js"></script>
     </body>
 </html>

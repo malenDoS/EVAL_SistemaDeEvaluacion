@@ -1,0 +1,136 @@
+#cabecera{
+    height:120px;
+    background-color:rgba(81,160,173,0.7);
+    box-shadow: 1px 1px 3px 1px #ffffff;
+    
+}
+#logo{
+    width:80px;
+    height:80px;
+    margin-top:5px;
+}
+#texto{
+    height:65px;
+    width:145px;
+    padding-bottom:5px;
+    margin-top:45px;
+    
+}
+#textoSecundario{
+   
+    color:#AD7240;
+   
+}
+#txtSC{
+    
+    width:145px;
+   
+   
+}
+
+body{
+    background-image:url("../imagenes/imagenFondo.jpg");
+    background-repeat:no-repeat;
+}
+
+
+
+
+#footer{
+    background-color:rgba(81,160,173,0.7);
+    box-shadow: 1px 1px 3px 1px #ffffff;
+    margin-top:0px;
+    font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 1px 2px black;
+  height:10px;
+  align-content:center;
+  
+}
+
+#imagenP{
+    
+    width:100px;
+    height:85px;
+   box-shadow: 3px 2px 3px rgba(255,255,255,0.7);
+   
+}
+.colImagen{
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:3px;
+}
+
+.modificar{
+    width:30px;
+    height:30px;
+    background-image:url("Iconos/editar.png");
+    background-size:cover;
+    box-shadow:0px 0px 20px rgba(255,255,255,0.7);
+    border:none;
+    margin-top:5px;
+}
+
+.columna{
+    margin-right:0px;
+    margin-left:0px;
+    margin-top:0px;
+    margin-bottom:10px;
+    box-shadow:0px 0px 20px rgba(255,255,255,0.7);
+}
+
+.infoP{
+   
+   font-size:20px;
+  font-weight:bold;
+   color:white;
+  text-shadow:1px 1px 10px rgba(0,0,0,0.7);
+  background-color:transparent;
+  text-align:center;
+    -webkit-text-stroke:1px black;
+}
+
+label{
+      
+   font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:0px 0px 10px rgba(255,255,255,0.7);
+}
+
+.bRadio{
+    margin-right:10px;
+     -webkit-text-stroke:1px black;
+}
+.titulo{
+    font-size:20px;
+    color:white;
+    text-shadow:4px 2px 10px rgba(0,0,0,0.7);
+    padding-top:10px;
+}
+
+.botones{
+    padding-bottom:10px;
+}
+
+.sinEscritura{
+    background-color:transparent;
+    text-align:center;
+}
+
+.id{
+    visibility: hidden;
+}
+
+#cargo{
+    font-size:20px;
+  font-weight:bold;
+   color:white;
+  text-shadow:1px 1px 10px rgba(0,0,0,0.7);
+}
+
+.escondido{
+    visibility:hidden;
+}
+

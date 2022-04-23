@@ -121,7 +121,7 @@ class BaseDatos{
         }
     }
     
-    function asignatura(){
+    function asignatura($consulta){
         $asignatura;
         $info=$this->conexion->query($consulta);
         //Averiguo, que asginatura imparte el profesor.
@@ -177,6 +177,149 @@ class BaseDatos{
         $notaMatematicas=$this->conexion->query($consulta);
         return $notaMatematicas;
     }
+    
+    function guardarNotas($datos){
+        $consultaSQL=$datos[0];
+        $primera=$datos[1];
+        $segunda=$datos[2];
+        $tercera=$datos[3];
+        $notaF=$datos[4];
+        $observaciones=$datos[5];
+        $idAlumno=$datos[6];
+
+
+        $resultado=$this->conexion->prepare($consultaSQL);
+        $resultado->execute(array(":prim"=>(int)$primera,":seg"=>(int)$segunda,":ter"=>(int)$tercera,":notF"=>(int)$notaF,":obs"=>$observaciones,"idA"=>(int)$idAlumno));
+        
+        $contador=$resultado->rowCount();
+        $mensaje;
+        if($contador>0){
+            $mensaje="si";
+        }else{
+            $mensaje="no";
+        }
+        if($_SESSION["Tipo"]!="Admin"){
+        header("location:../Vista/Asignaturas.php?mensaje=$mensaje");
+        }else{
+            return $mensaje;
+        }
+    }
+    
+    function infoProfesores($consulta){
+        $datosProfe=$this->conexion->query($consulta);
+        if($datosProfe->rowCount()>0){
+            return $datosProfe;
+        }else{
+            return "No hay datos";
+        }
+    }
+    
+    function deleteProfesor($datos){
+        $borrarProf=$this->conexion->query($datos[0]);
+        $borradoReg=$this->conexion->query($datos[1]);
+        if($borrarProf->rowCount()>0&&$borradoReg->rowCount()>0){
+            return "Si";
+        }else{
+            return "No";
+        }
+    }
+    
+    
+    function registro($datosRegistro){
+        $consultaSQL=$datosRegistro[3];
+        $email=$datosRegistro[0];
+        $contrasegna=$datosRegistro[1];
+        $tipo=$datosRegistro[2];
+        if($tipo=="Administrador"){
+            $tipo="si";
+        }else{
+            $tipo="no";
+        }
+        
+        $resultado=$this->conexion->prepare($consultaSQL);
+        $resultado->execute(array(":em"=>$email,":con"=>$contrasegna,":tip"=>$tipo));
+        if($resultado->rowCount()>0){
+            return "ok";
+        }else{
+            return "no";
+        }
+    }
+    
+    function regPersonal($datosPersonal){
+        $educacionF=0;
+        $lenguaC=0;
+        $geografia=0;
+        $fisica=0;
+        $matematicas=0;
+        $ingles=0;
+        //Identifico la asignatura.
+        if($datosPersonal[4]=="educacionFisica"){
+            $educacionF=1;
+        }else if($datosPersonal[4]=="matematicas"){
+            $matematicas=1;
+        }else if($datosPersonal[4]=="geografiaHistoria"){
+            $geografia=1;
+        }else if($datosPersonal[4]=="ingles"){
+            $ingles=1;
+        }else if($datosPersonal[4]=="lenguaCastellana"){
+            $lenguaC=1;
+        }else if($datosPersonal[4]=="fisica"){
+            $fisica=1;
+        }
+        
+        $resultado=$this->conexion->prepare($datosPersonal[9]);
+        $resultado->execute(array(":nom"=>$datosPersonal[0],":ape"=>$datosPersonal[1],":dir"=>$datosPersonal[2],":car"=>$datosPersonal[3],":eduF"=>$educacionF,":mat"=>$matematicas,":geo"=>$geografia,":len"=>$lenguaC,":ing"=>$ingles,":fis"=>$fisica,":tel"=>$datosPersonal[5],":dni"=>$datosPersonal[6],":fecN"=>$datosPersonal[7],":ima"=>$datosPersonal[8]));
+        
+        if($resultado->rowCount()>0){
+            return "ok";
+        }else{
+            return "no";
+        }
+    }
+    
+    function insertar($datos){
+       
+        for($i=0;$i<8;$i++){
+            if($datos[$i]==""){
+                $datos[$i]==null;
+            }
+        }
+        
+        $consultaSQL=$datos[0];
+        $primera=$datos[1];
+        $segunda=$datos[2];
+        $tercera=$datos[3];
+        $notaF=$datos[4];
+        $observaciones=$datos[5];
+        $idAlumno=$datos[6];
+        $clase=$datos[7];
+        
+        
+       
+     
+        
+        $resultado=$this->conexion->prepare($consultaSQL);
+        $resultado->execute(array(":prim"=>(int)$primera,":seg"=>(int)$segunda,":ter"=>(int)$tercera,":notF"=>(int)$notaF,":obs"=>$observaciones,":idA"=>(int)$idAlumno,":clas"=>$clase));
+        
+        $contador=$resultado->rowCount();
+        $mensaje;
+        if($contador>0){
+            $mensaje="si";
+        }else{
+            $mensaje="no";
+        }
+        if($_SESSION["Tipo"]!="Admin"){
+        header("location:../Vista/Asignaturas.php?mensaje=$mensaje");
+        }else{
+            return $mensaje;
+        }
+        
+    }
+    
+     function clase($consultaSQL){
+            $clase=$this->conexion->query($consultaSQL);
+            return $clase;
+        }
 }
 
 

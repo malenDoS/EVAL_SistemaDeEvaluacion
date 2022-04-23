@@ -39,7 +39,7 @@
         
         <div id='enlaces' class='row'>
             <button type='button' class='btn-info col-md-2 offset-md-1' ><a href='PerfilPersonal.php'>Perfil</a></button>
-            <button type='button' class='btn-info col-md-2'><a>Profesores</a></button><button type='button' class='btn-info col-md-2'><a href='Asignaturas.php'>Asignaturas</a></button>
+            <button type='button' class='btn-info col-md-2'><a href='Profesores.php'>Profesores</a></button><button type='button' class='btn-info col-md-2'><a href='Asignaturas.php'>Asignaturas</a></button>
             <button type='button' class='btn-info col-md-2'><a>Alumnos</a></button><button type='button' class='btn-info col-md-2'><a>Guía de uso</a></button>
             <div>
             <div id='volver' class='row'>

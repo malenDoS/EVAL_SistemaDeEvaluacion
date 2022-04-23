@@ -77,5 +77,76 @@ function paginacionProfesores(){
     return $numeroP;
 }
 
+function todosLosProfesores(){
+    $consulta="SELECT nombre,apellido,ID,cargo FROM personal";
+    $baseDatos=new BaseDatos($this->conexion);
+    $datos=$baseDatos->infoProfesores($consulta);
+    return $datos;
 }
+
+function borrarProfe($idProfesor){
+    $consulta="DELETE FROM personal WHERE ID=$idProfesor";
+    $consulta2="DELETE FROM registrados WHERE ID=$idProfesor";
+    $datosBorrar=array();
+    $datosBorrar[0]=$consulta;
+    $datosBorrar[1]=$consulta2;
+    $baseDatos=new BaseDatos($this->conexion);
+    $profesorBorrado=$baseDatos->deleteProfesor($datosBorrar);
+    
+    return $profesorBorrado;
+}
+
+function registrarProfesor($email,$contrasegna,$tipoUsuario){
+    $emailProfesor=htmlentities(addslashes($email));
+    $contrasegnaPro=htmlentities(addslashes($contrasegna));
+    $tipoU=$tipoUsuario;
+    $consulta="INSERT INTO registrados(Email,contrasegna,Admin) VALUES(:em,:con,:tip)";
+    //Guardo la información en un array.
+    $datos=array();
+    $datos[0]=$emailProfesor;
+    $datos[1]=$contrasegnaPro;
+    $datos[2]=$tipoU;
+    $datos[3]=$consulta;
+    $baseDatos=new BaseDatos($this->conexion);
+    $registrado=$baseDatos->registro($datos);
+    return $registrado;
+}
+
+function registrarPersonal($nombre,$apellido,$direccion,$cargo,$asignatura,$telefono,$dni,$fechaNacimiento,$nombrei,$tamagnoi,$tipoArchivoI,$carpetaTemporal){
+    //Compruebo la imagen que ha enviado el usuario.
+    
+        $carpetaDestino=$_SERVER["DOCUMENT_ROOT"]."/EVAL_sistema_de_evaluación/Vista/imagenes/fotosPerfil/";
+        move_uploaded_file($carpetaTemporal,$carpetaDestino.$nombrei);
+        $consultaSQL="INSERT INTO personal(nombre,apellido,direccion,cargo,educacionFisica,matematicas,geografiaHistoria,lengua,ingles,fisica,telefono,dni,fechaNacimiento,imagen) VALUES(:nom,:ape,:dir,:car,:eduF,:mat,:geo,:len,:ing,:fis,:tel,:dni,:fecN,:ima);";
+        $baseDatos=new BaseDatos($this->conexion);
+        
+        $this->nombre=htmlentities(addslashes($nombre));
+        $this->apellido=htmlentities(addslashes($apellido));
+        $this->direccion=htmlentities(addslashes($direccion));
+        $this->cargo=htmlentities(addslashes($cargo));
+        $this->asignatura=$asignatura;
+        $this->telefono=$telefono;
+        $this->dni=htmlentities(addslashes($dni));
+        $this->fechaNacimiento=htmlentities(addslashes($fechaNacimiento));
+        //Guardo los datos para realizar el registro.
+        $datos=array();
+        $datos[0]=$this->nombre;
+        $datos[1]=$this->apellido;
+        $datos[2]=$this->direccion;
+        $datos[3]=$this->cargo;
+        $datos[4]=$this->asignatura;
+        $datos[5]=$this->telefono;
+        $datos[6]=$this->dni;
+        $datos[7]=$this->fechaNacimiento;
+        $datos[8]=$nombrei;
+        $datos[9]=$consultaSQL;
+        
+        $registroPersonal=$baseDatos->regPersonal($datos);
+        return $registroPersonal;
+    }
+       
+    
+    
+}
+
 ?>

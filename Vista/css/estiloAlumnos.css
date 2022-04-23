@@ -48,73 +48,21 @@ body{
   
 }
 
-p{
-    padding-top:15px;
-    letter-spacing:2px;
+#botonesElegir{
+    margin-top:45px;
 }
 
-#alumnos{
-    height:200px;
-  margin-top:40px;
+#contenido{
+    margin-top:40px;
+    height:450px;
     box-shadow: 1px 1px 3px 1px #ffffff;
-}
-
-#notas{
-    height:700px;
-    box-shadow: 1px 1px 3px 1px #ffffff;
-    margin-top:70px;
     background-image:url("../imagenes/fondoAlumnos.png");
-}
-
-.bAlumno{
-margin-right:none;
-padding-right:none;
-}
-
-#idAlumno{
-    visibility:hidden;
-}
-.oculto{
-    visibility:hidden;
-}
-
-#nombreApellido{
-    text-align:center;
-    letter-spacing:20px;
-}
-
-#nombreColumnas{
-    text-align:center;
-}
-
-#notas p{
-     font-size:20px;
-  font-weight:bold;
-   color:white;
-  text-shadow:1px 1px 10px rgba(0,0,0,0.7);
-}
-
-.observaciones{
-    font-size:14px;
-}
-
-#guardarSalir{
-    margin-top:30px;
-}
-
-input{
-    font-size:20px;
-    font-weight:bold;
-   color:white;
-  text-shadow:1px 1px 10px rgba(0,0,0,0.7);
-  background-color:transparent;
-  text-align:center;
-    -webkit-text-stroke:1px black;
-}
-
-.noProfe{
-    color:rgba(81,160,173,0.9);
     
 }
-
-
+.botonAlumno{
+    border-radius:15px;
+    font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 1px 2px black;
+}

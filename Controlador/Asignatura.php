@@ -6,6 +6,8 @@ class Asignatura{
     private $primeraE;
     private $segundaE;
     private $terceraE;
+    private $notaFinal;
+    private $observaciones;
     private $conexion;
     
     function __construct(){
@@ -29,7 +31,7 @@ class Asignatura{
         $consulta="Select educacionFisica,matematicas,geografiaHistoria,lengua,ingles,fisica FROM personal WHERE ID=".$idU."";
         $baseDatos=new BaseDatos($this->conexion);
         //Realizo la consulta de la sentencia sql.
-        $asignatura=$baseDatos->asignatura();
+        $asignatura=$baseDatos->asignatura($consulta);
         return$asignatura;
     }
     
@@ -105,5 +107,210 @@ class Asignatura{
         //Devuelvo toda la información de la evaluación.
         return $evaluacion;
     }
+    
+    function guardarEduF($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
+        $this->primeraE=htmlentities(addslashes($primeraE));
+        $this->segundaE=htmlentities(addslashes($segundaE));
+        $this->terceraE=htmlentities(addslashes($terceraE));
+        $this->notaFinal=htmlentities(addslashes($notaF));
+        $this->idAlumno=$idAlumno;
+        $this->observaciones=$observaciones;
+        $consulta="UPDATE educacionfisica SET primeraEval=:prim, segundaEval=:seg, terceraEval=:ter,notaFinal=:notF,observaciones=:obs WHERE alumno=:idA;";
+        $datos=array();
+        $datos[0]=$consulta;
+        $datos[1]=$this->primeraE;
+        $datos[2]=$this->segundaE;
+        $datos[3]=$this->terceraE;
+        $datos[4]=$this->notaFinal;
+        $datos[5]=$this->observaciones;
+        $datos[6]=$this->idAlumno;
+       
+        //Mando la consulta.
+        $baseDatos=new BaseDatos($this->conexion);
+        $mensaje=$baseDatos->guardarNotas($datos);
+        if($mensaje=="si"){
+            return"Se han guardado los datos satisfactoriamente";
+        }else{
+            return"No se han podido guardar los datos";
+        }
+    }
+    
+     function guardarIngles($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
+        $this->primeraE=htmlentities(addslashes($primeraE));
+        $this->segundaE=htmlentities(addslashes($segundaE));
+        $this->terceraE=htmlentities(addslashes($terceraE));
+        $this->notaFinal=htmlentities(addslashes($notaF));
+        $this->idAlumno=$idAlumno;
+        $this->observaciones=$observaciones;
+        $consulta="UPDATE ingles SET primeraEval=:prim, segundaEval=:seg, terceraEval=:ter, notaFinal=:notF, observaciones=:obs WHERE alumno=:idA;";
+        $datos=array();
+        $datos[0]=$consulta;
+        $datos[1]=$this->primeraE;
+        $datos[2]=$this->segundaE;
+        $datos[3]=$this->terceraE;
+        $datos[4]=$this->notaFinal;
+        $datos[5]=$this->observaciones;
+        $datos[6]=$this->idAlumno;
+        
+        //Mando la consulta.
+        $baseDatos=new BaseDatos($this->conexion);
+        $mensaje=$baseDatos->guardarNotas($datos);
+        if($mensaje=="si"){
+            return"Se han guardado los datos satisfactoriamente";
+        }else{
+            return"No se han podido guardar los datos";
+        }
+    }
+    
+     function guardarFisica($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
+    $this->primeraE=htmlentities(addslashes($primeraE));
+        $this->segundaE=htmlentities(addslashes($segundaE));
+        $this->terceraE=htmlentities(addslashes($terceraE));
+        $this->notaFinal=htmlentities(addslashes($notaF));
+        $this->idAlumno=$idAlumno;
+        $this->observaciones=$observaciones;
+        $consulta="UPDATE fisica SET primeraEval=:prim, segundaEval=:seg, terceraEval=:ter,notaFinal=:notF,observaciones=:obs WHERE alumno=:idA;";
+        $datos=array();
+        $datos[0]=$consulta;
+        $datos[1]=$this->primeraE;
+        $datos[2]=$this->segundaE;
+        $datos[3]=$this->terceraE;
+        $datos[4]=$this->notaFinal;
+        $datos[5]=$this->observaciones;
+        $datos[6]=$this->idAlumno;
+        
+        //Mando la consulta.
+        $baseDatos=new BaseDatos($this->conexion);
+        $mensaje=$baseDatos->guardarNotas($datos);
+        if($mensaje=="si"){
+            return"Se han guardado los datos satisfactoriamente";
+        }else{
+            return"No se han podido guardar los datos";
+        }
+    }
+    
+     function guardarMatematicas($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
+        $this->primeraE=htmlentities(addslashes($primeraE));
+        $this->segundaE=htmlentities(addslashes($segundaE));
+        $this->terceraE=htmlentities(addslashes($terceraE));
+        $this->notaFinal=htmlentities(addslashes($notaF));
+        $this->idAlumno=$idAlumno;
+        $this->observaciones=$observaciones;
+        $consulta="UPDATE matematicas SET primeraEval=:prim, segundaEval=:seg, terceraEval=:ter,notaFinal=:notF,observaciones=:obs WHERE alumno=:idA;";
+        $datos=array();
+        $datos[0]=$consulta;
+        $datos[1]=$this->primeraE;
+        $datos[2]=$this->segundaE;
+        $datos[3]=$this->terceraE;
+        $datos[4]=$this->notaFinal;
+        $datos[5]=$this->observaciones;
+        $datos[6]=$this->idAlumno;
+        
+        //Mando la consulta.
+        $baseDatos=new BaseDatos($this->conexion);
+        $mensaje=$baseDatos->guardarNotas($datos);
+        if($mensaje=="si"){
+            return"Se han guardado los datos satisfactoriamente";
+        }else{
+            return"No se han podido guardar los datos";
+        }
+    }
+    
+     function guardarLengua($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
+        $this->primeraE=htmlentities(addslashes($primeraE));
+        $this->segundaE=htmlentities(addslashes($segundaE));
+        $this->terceraE=htmlentities(addslashes($terceraE));
+        $this->notaFinal=htmlentities(addslashes($notaF));
+        $this->idAlumno=$idAlumno;
+        $this->observaciones=$observaciones;
+        $consulta="UPDATE lenguacastellana SET primeraEval=:prim, segundaEval=:seg, terceraEval=:ter,notaFinal=:notF,observaciones=:obs WHERE alumno=:idA;";
+        $datos=array();
+        $datos[0]=$consulta;
+        $datos[1]=$this->primeraE;
+        $datos[2]=$this->segundaE;
+        $datos[3]=$this->terceraE;
+        $datos[4]=$this->notaFinal;
+        $datos[5]=$this->observaciones;
+        $datos[6]=$this->idAlumno;
+        
+        //Mando la consulta.
+        $baseDatos=new BaseDatos($this->conexion);
+        $mensaje=$baseDatos->guardarNotas($datos);
+        if($mensaje=="si"){
+            return"Se han guardado los datos satisfactoriamente";
+        }else{
+            return"No se han podido guardar los datos";
+        }
+    }
+    
+     function guardarGeografia($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
+         
+        $this->primeraE=htmlentities(addslashes($primeraE));
+        $this->segundaE=htmlentities(addslashes($segundaE));
+        $this->terceraE=htmlentities(addslashes($terceraE));
+        $this->notaFinal=htmlentities(addslashes($notaF));
+        $this->idAlumno=$idAlumno;
+        $this->observaciones=$observaciones;
+        $consulta="UPDATE geografiahistoria SET primeraEval=:prim, segundaEval=:seg, terceraEval=:ter,notaFinal=:notF,observaciones=:obs WHERE alumno=:idA;";
+        $datos=array();
+        $datos[0]=$consulta;
+        $datos[1]=$this->primeraE;
+        $datos[2]=$this->segundaE;
+        $datos[3]=$this->terceraE;
+        $datos[4]=$this->notaFinal;
+        $datos[5]=$this->observaciones;
+        $datos[6]=$this->idAlumno;
+        
+        
+        //Mando la consulta.
+        $baseDatos=new BaseDatos($this->conexion);
+        $mensaje=$baseDatos->guardarNotas($datos);
+        if($mensaje=="si"){
+            return"Se han guardado los datos satisfactoriamente";
+        }else{
+            return"No se han podido guardar los datos";
+        }
+    }
+    
+    
+    function insertarEvaluacion($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones,$asignatura){
+        $this->primeraE=htmlentities(addslashes($primeraE));
+        $this->segundaE=htmlentities(addslashes($segundaE));
+        $this->terceraE=htmlentities(addslashes($terceraE));
+        $this->notaFinal=htmlentities(addslashes($notaF));
+        $this->idAlumno=$idAlumno;
+        $this->observaciones=$observaciones;
+        $consultaSQL="INSERT INTO $asignatura(primeraEval,segundaEval,terceraEval,notaFinal,observaciones,alumno,clase) VALUES(:prim,:seg,:ter,:notF,:obs,:idA,:clas)";
+   
+        
+         $consulta="SELECT clase FROM alumnos WHERE id_alumno=".$this->idAlumno.";";
+        
+        $baseDatos=new BaseDatos($this->conexion);
+        $consultaClase=$baseDatos->clase($consulta);
+        while($fila=$consultaClase->fetch(PDO::FETCH_ASSOC)){
+            $clase=$fila["clase"];
+        }
+        
+             $datos=array();
+        $datos[0]=$consultaSQL;
+        $datos[1]=$this->primeraE;
+        $datos[2]=$this->segundaE;
+        $datos[3]=$this->terceraE;
+        $datos[4]=$this->notaFinal;
+        $datos[5]=$this->observaciones;
+        $datos[6]=$this->idAlumno;
+        $datos[7]=$clase;
+        
+     
+      
+        
+        $mensaje=$baseDatos->insertar($datos);
+         if($mensaje=="si"){
+            return"Se han guardado los datos satisfactoriamente";
+        }else{
+            return"No se han podido guardar los datos";
+        }
+    }
+    
 }
 ?>

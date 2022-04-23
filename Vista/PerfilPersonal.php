@@ -61,7 +61,7 @@
         </div>
         <form action='".$_SERVER["PHP_SELF"]."' method='post'>
             <div class='row columna'>
-                <label for='Nombre' class='titulo col-md-2  offset-md-3'>Nombre:</label><input name='nombre' type='text' value='".$usuario[0]."' class='col-md-3 infoP'></input>
+                <label for='Nombre' class='titulo col-md-2  offset-md-3'>Nombre:</label><input name='nombre' type='text' value='".$usuario[0]."' class='col-md-3 infoP'>
             </div>
             <div class='row columna'>
                  <label for='Apellido' class='titulo col-md-2 offset-md-3'>Apellido:</label><input name='apellido' type='text' value='".$usuario[1]."' class='col-md-3 infoP'>
@@ -71,7 +71,7 @@
             </div>
             <div class='row columna'>
                  ";if($_SESSION["Tipo"]=="Admin"){echo"<a ";if($idU==1){echo "href='PerfilPersonal.php?us=".($idU+1)."'";}else{echo "href='PerfilPersonal.php?us=".($idU-1)."'";}   echo" class='col-md-1'><img style='width:50px; height:50px' src=";if($idU==1){echo"'imagenes/Iconos/flechaDerecha.png'></a>";}else{ echo"'imagenes/Iconos/flechaIzquierda.png'></a>";}} echo"<label for='DNI' class='titulo ";if($_SESSION["Tipo"]=="Admin"){echo "offset-md-2";}else{echo "offset-md-3";}echo " col-md-2'>DNI:</label><input name='dni' type='text' value='".$usuario[3]."' class='col-md-3 infoP'>";if($_SESSION["Tipo"]=="Admin"){echo"<a ";if($idU!=$numeroProfesores){echo "href='PerfilPersonal.php?us=".($idU+1)."'";}else{echo "href='PerfilPersonal.php?us=".($idU-1)."'";}echo" class='derecha offset-md-3 col-md-1'><img style='width:50px; height:50px' src=";if($idU==$numeroProfesores){echo"'imagenes/Iconos/flechaIzquierda.png'></a>";}
-                 else{ echo"'imagenes/Iconos/flechaDerecha.png'></a>";};}
+                 else{ echo"'imagenes/Iconos/flechaDerecha.png'></a>";}}
                  echo "</div>
             <div class='row columna'>
                  <label for='Telefono' class='titulo col-md-2 offset-md-3'>Teléfono:</label><input name='telefono' type='text' value='".$usuario[4]."' class='col-md-3 infoP'>
@@ -105,7 +105,7 @@
             </div>
             <div class='row columna'>
             <input class='id' name='idUsuario' type='text' value='".$usuario[14]."'>
-                <input value='Guardar todos los cambios' name='guardar' type='submit' class=' offset-md-4 col-md-2'><input value='Salir' type='submit' class='col-md-2'>
+                <input value='Guardar todos los cambios' name='guardar' type='submit' class=' offset-md-4 col-md-2'><button type='button' class='btn-info col-md-2'><a href='MenuDeOpciones.php'>Salir</a></button>
         </div></form";
                     
             

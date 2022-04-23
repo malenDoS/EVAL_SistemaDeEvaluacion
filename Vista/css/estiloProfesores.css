@@ -1,0 +1,121 @@
+#cabecera{
+    height:120px;
+    background-color:rgba(81,160,173,0.7);
+    box-shadow: 1px 1px 3px 1px #ffffff;
+    
+}
+#logo{
+    width:80px;
+    height:80px;
+    margin-top:5px;
+}
+#texto{
+    height:65px;
+    width:145px;
+    padding-bottom:5px;
+    margin-top:45px;
+    
+}
+#textoSecundario{
+   
+    color:#AD7240;
+   
+}
+#txtSC{
+    
+    width:145px;
+   
+   
+}
+
+body{
+    background-image:url("../imagenes/imagenFondo.jpg");
+    background-repeat:no-repeat;
+}
+
+
+
+
+#footer{
+    background-color:rgba(81,160,173,0.7);
+    box-shadow: 1px 1px 3px 1px #ffffff;
+    margin-top:60px;
+    font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 1px 2px black;
+  height:10px;
+  align-content:center;
+  
+}
+
+#botones{
+    margin-top:50px;
+}
+.boton{
+    border-radius:10px;
+    box-shadow:1px 1px 3px 1px #ffffff;
+    font-size:15px;
+  font-weight:bold;
+   color:white;
+   letter-spacing:10px;
+   
+}
+.izquierda{
+    margin-left:10px;
+}
+
+.informacionP{
+    margin-top:10px;
+    height:450px;
+    box-shadow: 1px 1px 3px 1px #ffffff;
+    background-image:url("../imagenes/fondoAlumnos.png");
+    
+}
+
+.bProfesor{
+    height:130px;
+    border-radius:15px;
+    margin-right:5px;
+}
+.filaB{
+    margin-top:10px;
+}
+
+#instruccion{
+    letter-spacing:10px;
+    margin-top:20px;
+    font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 1px 2px black;
+  letter-spacing:10px;
+    letter-spacing:20px;
+}
+#fraseIns{
+    margin-top:10px;
+    margin-bottom:-50px;
+    font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 1px 2px black;
+  letter-spacing:10px;
+}
+.etiqueta{
+    text-align:center;
+    letter-spacing:10px;
+    margin-right:5px;
+     font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 1px 2px black;
+  margin-top:3px;
+}
+.inputProfesor{
+    margin-left:5px;
+    border-radius:10px;
+}
+.columnaInput{
+    margin-top:10px;
+ 
+}

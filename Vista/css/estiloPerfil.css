@@ -134,3 +134,8 @@ label{
     visibility:hidden;
 }
 
+.bot{
+    font-size:15px;
+    font-weight:bold;
+    border-radius:15px;
+}

@@ -320,6 +320,72 @@ class BaseDatos{
             $clase=$this->conexion->query($consultaSQL);
             return $clase;
         }
+        
+    function modificarAlumno($datos){
+        $resultado=$this->conexion->prepare($datos[0]);
+        $resultado->execute(array(":nom"=>$datos[1],":ape"=>$datos[2],":cla"=>$datos[3],":conP"=>(int)$datos[4],":dir"=>$datos[5],":tut"=>$datos[6]));
+        $contador=$resultado->rowCount();
+        $mensaje;
+        if($contador>0){
+            $mensaje="si";
+        }else{
+            $mensaje="no";
+        }
+        return $mensaje;
+    }
+    
+    function eliminarAl($id){
+        $borrarAlumno=$this->conexion->query("DELETE FROM alumnos WHERE id_alumno=$id");
+       $borrarEduFi=$this->conexion->query("DELETE FROM educacionfisica WHERE alumno=$id");
+       $borrarFi=$this->conexion->query("DELETE FROM fisica WHERE alumno=$id");
+       $borrarIn=$this->conexion->query("DELETE FROM ingles WHERE alumno=$id");
+       $borrarGeo=$this->conexion->query("DELETE FROM geografiahistoria WHERE alumno=$id");
+       $borrarLen=$this->conexion->query("DELETE FROM lenguacastellana WHERE alumno=$id");
+       $borrarMa=$this->conexion->query("DELETE FROM matematicas WHERE alumno=$id");
+        if($borrarAlumno->rowCount()>0&&$borrarEduFi->rowCount()>0&&$borrarFi->rowCount()>0&&$borrarIn->rowCount()>0&&$borrarGeo->rowCount()>0&&$borrarLen->rowCount()>0&&$borrarMa->rowCount()>0){
+            return "Si";
+        }else{
+            return "No";
+        }
+    }
+    
+    function insertarAlumno($consultasAsignatura){
+     
+        for($i=0;$i<6;$i++){
+        $resultado=$this->conexion->prepare($consultasAsignatura[$i]);
+        $resultado->execute(array(":id"=>(int)$consultasAsignatura[6],":clas"=>$consultasAsignatura[7]));
+        
+        $contador=$resultado->rowCount();
+        if($contador<0){
+            return "no";
+        }
+        }
+        return "si";
+    }
+    
+    function nuevoAlumno($datos){
+         $resultado=$this->conexion->prepare($datos[6]);
+        $resultado->execute(array(":nom"=>$datos[0],":ape"=>$datos[1],":dir"=>$datos[4],":clas"=>$datos[2],":conP"=>(int)$datos[3],":tut"=>$datos[5]));
+        $contador=$resultado->rowCount();
+        $mensaje;
+        if($contador>0){
+            $mensaje="si";
+        }else{
+            $mensaje="no";
+        }
+        return $mensaje;
+        
+    }
+    
+    function idAlumno($consultaId){
+         $idAlumno=$this->conexion->query($consultaId);
+        if($idAlumno->rowCount()>0){
+            return $idAlumno;
+        }else{
+            return "No";
+        }
+    }
+    
 }
 
 

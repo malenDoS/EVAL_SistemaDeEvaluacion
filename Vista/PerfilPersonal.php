@@ -105,7 +105,7 @@
             </div>
             <div class='row columna'>
             <input class='id' name='idUsuario' type='text' value='".$usuario[14]."'>
-                <input value='Guardar todos los cambios' name='guardar' type='submit' class=' offset-md-4 col-md-2'><button type='button' class='btn-info col-md-2'><a href='MenuDeOpciones.php'>Salir</a></button>
+                <input value='Guardar todos los cambios' name='guardar' type='submit' class='bot offset-md-4 col-md-2'><button type='button' class='btn-info col-md-2 bot'><a href='MenuDeOpciones.php'>Salir</a></button>
         </div></form";
                     
             

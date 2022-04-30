@@ -231,7 +231,7 @@
                 
                 //Dos botones para guardar los cambios o salir.
                 echo"<div id='guardarSalir' class='col-md-12 row'>";
-                echo"<input value='Guardar Evaluación' name='guardar' type='submit' class='col-md-6'><button type='button' class='btn-info col-md-6'><a href='MenuDeOpciones.php'>Salir</a></button></div>";
+                echo"<input value='Guardar Evaluación' name='guardar' type='submit' class='col-md-6'><button type='button' class='btn-info col-md-6 bot'><a href='Asignaturas.php'>Volver</a></button></div>";
                 echo"<input id='idAlumno' name='idAlumno' type='text' value='".$idAlumno."'>";
                 $tipoAlumnoEduFi="Evaluado";
                 $tipoAlumnoFi="Evaluado";
@@ -277,6 +277,7 @@
         ?>
         
         <?php
+        echo"<button type='button' class='offset-md-5 btn-info col-md-2 bot sal'><a href='MenuDeOpciones.php'>Salir</a></button>";
         include("comunes/pieDePagina.html");
         ?>
          <script type="text/javascript" src="librerías/jquery-3.6.0.min.js"></script>

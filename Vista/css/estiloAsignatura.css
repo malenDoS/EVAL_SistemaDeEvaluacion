@@ -38,7 +38,7 @@ body{
 #footer{
     background-color:rgba(81,160,173,0.7);
     box-shadow: 1px 1px 3px 1px #ffffff;
-    margin-top:308px;
+    margin-top:315px;
     font-size:15px;
   font-weight:bold;
    color:white;
@@ -117,4 +117,14 @@ input{
     
 }
 
-
+.bot{
+    font-size:15px;
+    font-weight:bold;
+    color:white;
+    text-decoration:none;
+ 
+}
+.sal{
+    border-radius:15px;
+    margin-top:15px;
+}

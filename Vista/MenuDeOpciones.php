@@ -40,7 +40,7 @@
         <div id='enlaces' class='row'>
             <button type='button' class='btn-info col-md-2 offset-md-1' ><a href='PerfilPersonal.php'>Perfil</a></button>
             <button type='button' class='btn-info col-md-2'><a href='Profesores.php'>Profesores</a></button><button type='button' class='btn-info col-md-2'><a href='Asignaturas.php'>Asignaturas</a></button>
-            <button type='button' class='btn-info col-md-2'><a>Alumnos</a></button><button type='button' class='btn-info col-md-2'><a>Guía de uso</a></button>
+            <button type='button' class='btn-info col-md-2'><a href='AlumnosCentro.php'>Alumnos</a></button><button type='button' class='btn-info col-md-2'><a href='guiaUso.php'>Guía de uso</a></button>
             <div>
             <div id='volver' class='row'>
             <button type='button' id='bVolver' class='btn-info col-md-4 offset-md-4'><a>Salir</a></button>
@@ -59,10 +59,10 @@
         <div id='enlaces' class='row'>
             <button type='button' class='btn-info col-md-2 offset-md-2' ><a href='PerfilPersonal.php?'>Perfil</a></button>
             <button type='button' class='btn-info col-md-2'><a href='Asignaturas.php'>Asignaturas</a></button>
-            <button type='button' class='btn-info col-md-2'><a>Alumnos</a></button><button type='button' class='btn-info col-md-2'><a>Guía de uso</a></button>
+            <button type='button' class='btn-info col-md-2'><a href='alumnosCentro.php'>Alumnos</a></button><button type='button' class='btn-info col-md-2'><a href='guiaUso.php'>Guía de uso</a></button>
             <div>
             <div id='volver' class='row'>
-            <button type='button' id='bVolver' class='btn-info col-md-1 offset-md-5'><a href='MenuDeOpciones.php'>Salir</a></button>
+            <button type='button' id='bVolver' class='btn-info col-md-1 offset-md-5'><a href='Formulario de entrada.php'>Salir</a></button>
             </div>";
                         
             }

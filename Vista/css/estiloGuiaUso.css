@@ -1,0 +1,99 @@
+#cabecera{
+    height:120px;
+    background-color:rgba(81,160,173,0.7);
+    box-shadow: 1px 1px 3px 1px #ffffff;
+    
+}
+#logo{
+    width:80px;
+    height:80px;
+    margin-top:5px;
+}
+#texto{
+    height:65px;
+    width:145px;
+    padding-bottom:5px;
+    margin-top:45px;
+    
+}
+#textoSecundario{
+   
+    color:#AD7240;
+   
+}
+#txtSC{
+    
+    width:145px;
+   
+   
+}
+
+body{
+    background-image:url("../imagenes/imagenFondo.jpg");
+    background-repeat:no-repeat;
+}
+
+
+
+#footer{
+    background-color:rgba(81,160,173,0.7);
+    box-shadow: 1px 1px 3px 1px #ffffff;
+    margin-top:570px;
+    font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 1px 2px black;
+  height:10px;
+  align-content:center;
+  
+}
+
+#contenedorBotones{
+display:inline-block;
+  margin-left:5px;
+  margin-top: 30px;
+}
+.botonGuia{
+    letter-spacing:5px;
+      font-size:16px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 3px 2px black;
+  height:10px;
+}
+
+#contenedorInfo{
+    visibility:hidden;
+    width:1505px;
+    height:1000px;
+    position:absolute;
+    left:5px;
+    margin-top:10px;
+}
+
+
+
+.imagenGuia{
+      box-shadow: 3px 3px 3px 1px #ffffff;
+     
+}
+
+#imagen1{
+    position:absolute;
+    
+}
+#imagen2{
+    position:absolute;
+    left:520px;
+}
+#imagen3{
+    position:absolute;
+    right:0px;
+}
+.bot{
+    font-size:20px;
+    font-weight:bold;
+    text-decoration:none;
+    border-radius:15px;
+    margin-top:10px;
+}

@@ -12,7 +12,11 @@
             include("../Controlador/Profesor.php");
             include("comunes/Cabecera.html");
             
-            
+             //Compruebo si ha entrado un usuario con permisos de administrador.
+            session_start();
+            if(isset($_SESSION["Tipo"])=="Admin"){
+                
+            if($_SESSION["Tipo"]=="Admin"){
             //Compruebo si se ha pulsado el botón de guardar datos en el formulario.
             if(isset($_POST["GuardarDatos"])){
                 //Guardo los datos en variables.
@@ -62,7 +66,7 @@
                 echo"<div class='row'><p class='col-md-6 offset-md-3' id='fraseIns'>".$mensaje."</p></div>";
             }
             
-            
+           
           echo"<div id='botones' class='row container'>";
           echo"<button type='button' class='derecha boton btn-info col-md-3 offset-md-3' ><a href='Profesores.php?anadir=si'>Añadir</a></button>";
           echo"<button type='button' class='izquierda boton btn-info col-md-3' ><a href='Profesores.php?Borrar=si'>Borrar</a></button>";
@@ -132,15 +136,22 @@
                . "<option value='Administrador'>Administrador</option><option value='Usuario normal'>Usuario normal</option></select>";
               echo"</div>";
                echo"<div class='row columnaInput'>";
-              echo"<input class='offset-md-4 col-md-5 inputProfesor' type='Submit' name='GuardarDatos' value='Guardar datos'>";
+              echo"<label class='col-md-4'></label><input class='offset-md-3 col-md-4 inputProfesor botonGuardar' type='Submit' name='GuardarDatos' value='Guardar datos'>";
               echo"</div>";
               echo"</form>";
           }
           echo"</div>";
           echo"</div>";
+            }else{
+                header("Formulario de entrada.php");
+            }
+            }else{
+                header("Formulario de entrada.php");
+            }
          ?>
        
          <?php
+         echo"<button type='button' class='offset-md-5 btn-info col-md-2 bot'><a href='MenuDeOpciones.php'>Salir</a></button>";
           include("comunes/pieDePagina.html");
          ?>
         

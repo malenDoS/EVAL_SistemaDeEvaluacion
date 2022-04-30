@@ -38,7 +38,7 @@ body{
 #footer{
     background-color:rgba(81,160,173,0.7);
     box-shadow: 1px 1px 3px 1px #ffffff;
-    margin-top:308px;
+    margin-top:10px;
     font-size:15px;
   font-weight:bold;
    color:white;
@@ -53,7 +53,7 @@ body{
 }
 
 #contenido{
-    margin-top:40px;
+    margin-top:20px;
     height:450px;
     box-shadow: 1px 1px 3px 1px #ffffff;
     background-image:url("../imagenes/fondoAlumnos.png");
@@ -65,4 +65,62 @@ body{
   font-weight:bold;
    color:white;
   text-shadow:2px 1px 2px black;
+  letter-spacing:3px;
+}
+
+.opciones{
+    
+   text-decoration:none;
+   font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 1px 2px black;
+    
+}
+
+.enlaceA{
+    height:10px;
+    padding-top:5px;
+}
+
+.aInput{
+    height:30px;
+     font-size:15px;
+  font-weight:bold;
+   color:black;
+  border-radius:15px;
+  text-align:center;
+}
+#guardarD{
+    border-radius:15px;
+     font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 1px 2px black;
+}
+.labelA{
+    font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 1px 2px black;
+}
+.contenedorA{
+    margin-top:15px;
+}
+.oculto{
+    visibility:hidden;
+}
+
+.mensajeI{
+    font-size:15px;
+  font-weight:bold;
+   color:white;
+  text-shadow:2px 1px 2px black;
+}
+.bot{
+    font-size:20px;
+    font-weight:bold;
+    text-decoration:none;
+    border-radius:15px;
+    margin-top:10px;
 }

@@ -28,10 +28,11 @@
         <div id="contenedorInfo"><img id="imagen1" class="imagenGuia" style="width:470px; height:500px;" src=""><img id="imagen2" class="imagenGuia" style="width:470px; height:500px;" src=""><img id="imagen3" class="imagenGuia" style="width:470px; height:500px;" src=""></div>
         <?php
          echo"<button type='button' class='offset-md-5 btn-info col-md-2 bot'><a href='MenuDeOpciones.php'>Salir</a></button>";
-         include("comunes/pieDePagina.html");
+         
         }else{
             header("Formulario de entrada.php");
         }
+        include("comunes/pieDePagina.html");
             ?>
       
         <script type="text/javascript" src="librerías/bootstrap.min.js"></script>

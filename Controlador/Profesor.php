@@ -14,10 +14,12 @@ class Profesor{
      private $conexion;
      
     function __construct(){
+        //Establezco la conexión PDO.
         $this->conexion=new PDO("mysql:host=localhost; dbname=eval","root","nloeig31416");
         $this->conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     }
     
+    //Busco los datos del profesor según el id especificado.
     function getPerfilUsuario($idU){
     $baseDatos=new BaseDatos($this->conexion);
     $datos=$baseDatos->datosUsuario($idU);
@@ -44,6 +46,7 @@ class Profesor{
     return $usuario;
 }
 
+//Guardo los datos del profesor.
 function guardarDatosU($nombre,$apellido,$fechaNacimiento,$dni,$telefono,$direccion,$cargo,$asignatura,$id){
     $this->nombre=htmlentities(addslashes($nombre));
     $this->apellido=$apellido;
@@ -70,6 +73,7 @@ function guardarDatosU($nombre,$apellido,$fechaNacimiento,$dni,$telefono,$direcc
     $basedatos->guardarDatosProfesor($datosProfesor);
 }
 
+//Esta función da como resultado el número de profesores.
 function paginacionProfesores(){
     $baseDatos=new BaseDatos($this->conexion);
     $consulta="SELECT COUNT(*) FROM personal;";
@@ -77,6 +81,7 @@ function paginacionProfesores(){
     return $numeroP;
 }
 
+//La función informa del nombre, apellido, id y cargo de los profesores.
 function todosLosProfesores(){
     $consulta="SELECT nombre,apellido,ID,cargo FROM personal";
     $baseDatos=new BaseDatos($this->conexion);
@@ -84,6 +89,7 @@ function todosLosProfesores(){
     return $datos;
 }
 
+//Función para borrar al profesor de la tabla de personal y registrados.
 function borrarProfe($idProfesor){
     $consulta="DELETE FROM personal WHERE ID=$idProfesor";
     $consulta2="DELETE FROM registrados WHERE ID=$idProfesor";
@@ -96,6 +102,7 @@ function borrarProfe($idProfesor){
     return $profesorBorrado;
 }
 
+//Función para guardar la información de un profesor en la tabla de registrados.
 function registrarProfesor($email,$contrasegna,$tipoUsuario){
     $emailProfesor=htmlentities(addslashes($email));
     $contrasegnaPro=htmlentities(addslashes($contrasegna));
@@ -112,6 +119,7 @@ function registrarProfesor($email,$contrasegna,$tipoUsuario){
     return $registrado;
 }
 
+//Función que guarda los datos del formulario de nuevo profesor en la tabla personal.
 function registrarPersonal($nombre,$apellido,$direccion,$cargo,$asignatura,$telefono,$dni,$fechaNacimiento,$nombrei,$tamagnoi,$tipoArchivoI,$carpetaTemporal){
     //Compruebo la imagen que ha enviado el usuario.
     
@@ -145,7 +153,13 @@ function registrarPersonal($nombre,$apellido,$direccion,$cargo,$asignatura,$tele
         return $registroPersonal;
     }
        
-    
+    //Función que da como resultado los id de los profesores en la tabla personal.
+    function idsProfesor(){
+        $consultaSQL="SELECT ID FROM personal";
+        $baseDatos=new BaseDatos($this->conexion);
+        $resultado=$baseDatos->getIds($consultaSQL);
+        return $resultado;
+    }
     
 }
 

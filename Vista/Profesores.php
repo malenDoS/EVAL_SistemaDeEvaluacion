@@ -96,47 +96,47 @@
               
               
           }else if(isset($_GET["anadir"])){
-              echo"<form action='".$_SERVER["PHP_SELF"]."' method='POST' enctype='multipart/form-data'>";
+              echo"<form action='".$_SERVER["PHP_SELF"]."' method='POST' enctype='multipart/form-data' id='formulario'>";
               echo"<div class='row columnaInput'>";
-              echo"<label for='nombre' class='offset-md-3 col-md-3 etiqueta'>Nombre:</label><input class='col-md-3 inputProfesor' type='text' name='nombre'>";
+              echo"<label for='nombre' class='offset-md-3 col-md-3 etiqueta'>Nombre:</label><input class='col-md-3 inputProfesor' type='text' name='nombre' id='nombre'>";
               echo"</div>";
                echo"<div class='row columnaInput'>";
-              echo"<label for='apellidos' class='offset-md-3 col-md-3 etiqueta'>Apellido:</label><input class='col-md-3 inputProfesor' type='text' name='apellidos'>";
+              echo"<label for='apellidos' class='offset-md-3 col-md-3 etiqueta'>Apellido:</label><input class='col-md-3 inputProfesor' type='text' name='apellidos' id='apellido'>";
               echo"</div>";
               echo"<div class='row columnaInput'>";
-              echo"<label for='direccion' class='offset-md-3 col-md-3 etiqueta'>Dirección:</label><input class='col-md-3 inputProfesor' type='text' name='direccion'>";
+              echo"<label for='direccion' class='offset-md-3 col-md-3 etiqueta'>Dirección:</label><input class='col-md-3 inputProfesor' type='text' name='direccion' id='direccion'>";
               echo"</div>";
                echo"<div class='row columnaInput'>";
-              echo"<label for='cargo' class='offset-md-3 col-md-3 etiqueta'>Cargo:</label><input class='col-md-3 inputProfesor' type='text' name='cargo'>";
+              echo"<label for='cargo' class='offset-md-3 col-md-3 etiqueta'>Cargo:</label><input class='col-md-3 inputProfesor' type='text' name='cargo' id='cargo'>";
               echo"</div>";
                echo"<div class='row columnaInput'>";
               echo"<label for='asignatura' class='offset-md-3 col-md-3 etiqueta'>Asignatura:</label><select class='col-md-3 inputProfesor' id='asignaturas' name='asignaturas'>"
                . "<option value='educacionFisica'>Educación física</option><option value='matematicas'>Matemáticas</option><option value='geografiaHistoria'>Geografía Historia</option><option value='ingles'>Inglés</option><option value='lenguaCastellana'>Lengua castellana</option><option value='fisica'>Física</option></select>";
               echo"</div>";
                echo"<div class='row columnaInput'>";
-              echo"<label for='telefono' class='offset-md-3 col-md-3 etiqueta'>Teléfono:</label><input class='col-md-3 inputProfesor' type='number' name='telefono'>";
+              echo"<label for='telefono' class='offset-md-3 col-md-3 etiqueta'>Teléfono:</label><input class='col-md-3 inputProfesor' type='number' name='telefono' id='telefono'>";
               echo"</div>";
                echo"<div class='row columnaInput'>";
-              echo"<label for='dni' class='offset-md-3 col-md-3 etiqueta'>DNI:</label><input class='col-md-3 inputProfesor' type='text' name='dni'>";
+              echo"<label for='dni' class='offset-md-3 col-md-3 etiqueta'>DNI:</label><input class='col-md-3 inputProfesor' type='text' name='dni' id='dni'>";
               echo"</div>";
                echo"<div class='row columnaInput'>";
-              echo"<label for='FechaNacimiento' class='offset-md-3 col-md-3 etiqueta'>Fecha Nacimiento:</label><input class='col-md-3 inputProfesor' type='text' name='fechaNacimiento'>";
+              echo"<label for='FechaNacimiento' class='offset-md-3 col-md-3 etiqueta'>Fecha Nacimiento:</label><input class='col-md-3 inputProfesor' type='text' name='fechaNacimiento' id='fechaNacimiento'>";
               echo"</div>";
                echo"<div class='row columnaInput'>";
               echo"<label for='imagenPerfil' class='offset-md-3 col-md-3 etiqueta'>Imagen:</label><input  name='imagen' class='col-md-3 inputProfesor' type='file' id='imagen'>";
               echo"</div>";
                echo"<div class='row columnaInput'>";
-              echo"<label for='email' class='offset-md-3 col-md-3 etiqueta'>Email:</label><input class='col-md-3 inputProfesor' type='text' name='email'>";
+              echo"<label for='email' class='offset-md-3 col-md-3 etiqueta'>Email:</label><input class='col-md-3 inputProfesor' type='text' name='email' id='email'>";
               echo"</div>";
                echo"<div class='row columnaInput'>";
-              echo"<label for='contrasegna' class='offset-md-3 col-md-3 etiqueta'>Contraseña:</label><input class='col-md-3 inputProfesor' type='password' name='contrasegna'>";
+              echo"<label for='contrasegna' class='offset-md-3 col-md-3 etiqueta'>Contraseña:</label><input class='col-md-3 inputProfesor' type='password' name='contrasegna' id='contrasegna'>";
               echo"</div>";
               echo"<div class='row columnaInput'>";
               echo"<label for='Tipo usuario' class='offset-md-3 col-md-3 etiqueta'>Tipo usuario:</label><select class='col-md-3 inputProfesor' id='tipoU' name='tipoUsu'>"
                . "<option value='Administrador'>Administrador</option><option value='Usuario normal'>Usuario normal</option></select>";
               echo"</div>";
                echo"<div class='row columnaInput'>";
-              echo"<label class='col-md-4'></label><input class='offset-md-3 col-md-4 inputProfesor botonGuardar' type='Submit' name='GuardarDatos' value='Guardar datos'>";
+              echo"<label class='col-md-4'></label><input class='offset-md-3 col-md-4 inputProfesor botonGuardar' type='Submit' name='GuardarDatos' value='Guardar datos'><span class='fraseValidacion col-md-3' id='fraseV'></span>";
               echo"</div>";
               echo"</form>";
           }
@@ -154,7 +154,7 @@
          echo"<button type='button' class='offset-md-5 btn-info col-md-2 bot'><a href='MenuDeOpciones.php'>Salir</a></button>";
           include("comunes/pieDePagina.html");
          ?>
-        
+         <script type="text/javascript" src="javascript/validaProfesores.js"></script>
         <script type="text/javascript" src="librerías/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="librerías/bootstrap.min.js"></script>
     </body>

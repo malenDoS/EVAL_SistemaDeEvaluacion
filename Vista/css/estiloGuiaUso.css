@@ -29,7 +29,7 @@
 }
 
 body{
-    background-image:url("../imagenes/imagenFondo.jpg");
+    background-image:url("../imagenes/fondoGuia.jpg");
     background-repeat:no-repeat;
 }
 
@@ -38,7 +38,7 @@ body{
 #footer{
     background-color:rgba(81,160,173,0.7);
     box-shadow: 1px 1px 3px 1px #ffffff;
-    margin-top:570px;
+    margin-top:500px;
     font-size:15px;
   font-weight:bold;
    color:white;
@@ -65,10 +65,11 @@ display:inline-block;
 #contenedorInfo{
     visibility:hidden;
     width:1505px;
-    height:1000px;
+    height:510px;
     position:absolute;
     left:5px;
     margin-top:10px;
+    
 }
 
 
@@ -80,11 +81,11 @@ display:inline-block;
 
 #imagen1{
     position:absolute;
-    
+    left:10px;
 }
 #imagen2{
     position:absolute;
-    left:520px;
+    left:525px;
 }
 #imagen3{
     position:absolute;

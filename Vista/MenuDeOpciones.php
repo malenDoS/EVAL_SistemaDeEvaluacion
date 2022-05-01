@@ -43,7 +43,7 @@
             <button type='button' class='btn-info col-md-2'><a href='AlumnosCentro.php'>Alumnos</a></button><button type='button' class='btn-info col-md-2'><a href='guiaUso.php'>Guía de uso</a></button>
             <div>
             <div id='volver' class='row'>
-            <button type='button' id='bVolver' class='btn-info col-md-4 offset-md-4'><a>Salir</a></button>
+            <button type='button' id='bVolver' class='btn-info col-md-4 offset-md-4'><a href='Formulario de entrada.php'>Salir</a></button>
             </div>";
                 
                 
@@ -52,7 +52,7 @@
                         <p id='nombreUsuario' class='col-md-4 offset-md-4'>".$datos[0]." ".$datos[1]." / ".$datos[2]."</p></div>
                 <div id='imagenes' class='row'> 
                 <img src='imagenes/Iconos/Perfil.png' class='col-md-2 offset-md-2 iconoInfo izquierda'>
-                <img src='imagenes/Iconos/asignaturas.png' class='col-md-2'><img src='imagenes/Iconos/estudiante.png' class='col-md-2 iconoInfo'>
+                <img src='imagenes/Iconos/asignaturas.png' class='col-md-2 iconoInfo'><img src='imagenes/Iconos/estudiante.png' class='col-md-2 iconoInfo'>
                 <img src='imagenes/Iconos/informacion.png' class='col-md-2 iconoInfo'>
             </div>
         

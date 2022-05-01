@@ -27,6 +27,7 @@ class Asignatura{
         
     }
     
+    //Función para buscar la asignatura que imparte el profesor según su id.
     function asignaturaProfesor($idU){
         $consulta="Select educacionFisica,matematicas,geografiaHistoria,lengua,ingles,fisica FROM personal WHERE ID=".$idU."";
         $baseDatos=new BaseDatos($this->conexion);
@@ -35,6 +36,7 @@ class Asignatura{
         return$asignatura;
     }
     
+    //Función que consulta las notas y las observaciones de cada una de las asignaturas según el id del alumno.
     function evaluacionAlumno($idAlumno){
         $consulta="Select nombre, apellido,clase FROM alumnos WHERE id_alumno=".$idAlumno."";
         $consulta2="SELECT primeraEval,segundaEval,terceraEval,notaFinal,observaciones FROM educacionfisica WHERE alumno=".$idAlumno."";
@@ -108,6 +110,7 @@ class Asignatura{
         return $evaluacion;
     }
     
+    //Guarda la nota de la asignatura, educación física.
     function guardarEduF($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
         $this->primeraE=htmlentities(addslashes($primeraE));
         $this->segundaE=htmlentities(addslashes($segundaE));
@@ -135,6 +138,7 @@ class Asignatura{
         }
     }
     
+    //Guarda la nota de la asignatura, inglés.
      function guardarIngles($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
         $this->primeraE=htmlentities(addslashes($primeraE));
         $this->segundaE=htmlentities(addslashes($segundaE));
@@ -162,6 +166,7 @@ class Asignatura{
         }
     }
     
+    //Guarda las notas de la asignatura, fisica.
      function guardarFisica($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
     $this->primeraE=htmlentities(addslashes($primeraE));
         $this->segundaE=htmlentities(addslashes($segundaE));
@@ -189,6 +194,7 @@ class Asignatura{
         }
     }
     
+    //Función que guarda la asignatura, matemáticas.
      function guardarMatematicas($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
         $this->primeraE=htmlentities(addslashes($primeraE));
         $this->segundaE=htmlentities(addslashes($segundaE));
@@ -216,6 +222,7 @@ class Asignatura{
         }
     }
     
+    //Guarda las notas de la asignatura, lengua castellana.
      function guardarLengua($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
         $this->primeraE=htmlentities(addslashes($primeraE));
         $this->segundaE=htmlentities(addslashes($segundaE));
@@ -243,6 +250,7 @@ class Asignatura{
         }
     }
     
+    //Guarda las notas de la asignatura, geografiaHistoria.
      function guardarGeografia($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones){
          
         $this->primeraE=htmlentities(addslashes($primeraE));
@@ -272,7 +280,7 @@ class Asignatura{
         }
     }
     
-    
+    //Función que introduce las notas de los alumnos que han sido evaluados por primera vez.
     function insertarEvaluacion($idAlumno,$primeraE,$segundaE,$terceraE,$notaF,$observaciones,$asignatura){
         $this->primeraE=htmlentities(addslashes($primeraE));
         $this->segundaE=htmlentities(addslashes($segundaE));

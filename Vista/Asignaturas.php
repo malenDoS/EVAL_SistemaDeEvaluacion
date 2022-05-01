@@ -16,13 +16,7 @@
         if(isset($_SESSION["Tipo"])){
             include("../Controlador/Asignatura.php");
             
-            if(isset($_GET["mensaje"])){
-                if($_GET["mensaje"]=="si"){
-                    echo"<div id='mensaje' class='row'><p class='col-md-12'>Se han guardado los datos satisfactoriamente</p></div>";
-                }else{
-                    echo"<div id='mensaje' class='row'><p class='col-md-12'>No se han podido guarrdar los datos</p></div>";
-                }
-            }
+           
             
              $asignaturas=new Asignatura();
              //Guardo en una variable, la asignatura que imparte el usuario que usa la web.
@@ -41,15 +35,11 @@
                     //Guardo la información.
                     if($_POST["tipoAlumnoEduFi"]=="noEval"){
                         $mensaje=$asignaturas->insertarEvaluacion($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones,"educacionfisica");
-                         if($_SESSION["Tipo"]=="Admin"){
-                        echo$mensaje;
-                    }
+                        
                     
                     }else{
                     $mensaje=$asignaturas->guardarEduF($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones);
-                    if($_SESSION["Tipo"]=="Admin"){
-                        echo$mensaje;
-                    }
+                    
                     }
                     
                 }if($_SESSION["Tipo"]=="Admin"||$asignaturaProfe=="fisica"){
@@ -62,9 +52,7 @@
                     //Guardo la información.
                     if($_POST["tipoAlumnoFi"]=="noEval"){
                         $mensaje=$asignaturas->insertarEvaluacion($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones,"fisica");
-                         if($_SESSION["Tipo"]=="Admin"){
-                        echo$mensaje;
-                    }
+                        
                     
                     }else{
                     $asignaturas->guardarFisica($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones);
@@ -80,9 +68,7 @@
                     //Guardo la información.
                     if($_POST["tipoAlumnoIn"]=="noEval"){
                         $mensaje=$asignaturas->insertarEvaluacion($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones,"ingles");
-                         if($_SESSION["Tipo"]=="Admin"){
-                        echo$mensaje;
-                    }
+                        
                     
                     }else{
                     $asignaturas->guardarIngles($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones);
@@ -98,9 +84,7 @@
                     //Guardo la información.
                     if($_POST["tipoAlumnoLen"]=="noEval"){
                         $mensaje=$asignaturas->insertarEvaluacion($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones,"lenguacastellana");
-                         if($_SESSION["Tipo"]=="Admin"){
-                        echo$mensaje;
-                    }
+                         
                     
                     }else{
                     $asignaturas->guardarLengua($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones);
@@ -116,9 +100,7 @@
                     //Guardo la información.
                     if($_POST["tipoAlumnoGeo"]=="noEval"){
                         $mensaje=$asignaturas->insertarEvaluacion($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones,"geografiahistoria");
-                         if($_SESSION["Tipo"]=="Admin"){
-                        echo$mensaje;
-                    }
+                       
                     
                     }else{
                     $asignaturas->guardarGeografia($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones);
@@ -134,9 +116,7 @@
                     //Guardo la información.
                     if($_POST["tipoAlumnoMa"]=="noEval"){
                         $mensaje=$asignaturas->insertarEvaluacion($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones,"matematicas");
-                         if($_SESSION["Tipo"]=="Admin"){
-                        echo$mensaje;
-                    }
+                       
                     
                     }else{
                     $asignaturas->guardarMatematicas($idA,$evaluacion1,$evaluacion2,$evaluacion3,$evaluacionFinal,$observaciones);
@@ -182,52 +162,52 @@
                 echo"<div id='nombreApellido' class='col-md-12 row'>";
                 echo"<p class='col-md-12'>".$infoEvaluacion[0]." ".$infoEvaluacion[1]." // Clase:".$infoEvaluacion[2]."</p></div>";
              
-               echo"<form action='".$_SERVER["PHP_SELF"]."' method='POST'>";
+               echo"<form action='".$_SERVER["PHP_SELF"]."' method='POST' id='formulario'>";
                 echo"<div id='nombreColumnas' class='col-md-12 row'>";
                 echo"<p class='col-md-2 offset-md-2'>1a Eval</p><p class='col-md-2'>2a Eval</p><p class='col-md-2'>3a Eval</p>"
                 . "<p class='col-md-2'>Nota Final</p><p class='col-md-2'>Observaciones</p></div>";
                 //Un contenedor para cada asignatura.
                 echo"<div id='notasEduF' class='col-md-12 row filaNotas'>";
-                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe'";}else{echo"'";}echo">Educación Física</p><input name='primEF' type='text' value='".$infoEvaluacion[3]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='segEF' type='text' value='".$infoEvaluacion[4]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='terEF' type='text' value='".$infoEvaluacion[5]."' class='col-md-2  ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='nfEF' type='text' value='".$infoEvaluacion[6]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='obsEF' type='text' value='".$infoEvaluacion[7]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
+                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe'";}else{echo"'";}echo">Educación Física</p><input id='e1' name='primEF' type='number' value='".$infoEvaluacion[3]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e2' name='segEF' type='number' value='".$infoEvaluacion[4]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e3' name='terEF' type='number' value='".$infoEvaluacion[5]."' class='col-md-2  ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e4' name='nfEF' type='number' value='".$infoEvaluacion[6]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='o1' name='obsEF' type='text' value='".$infoEvaluacion[7]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="educacion Fisica"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
                 
                 echo"<div id='notasFis' class='col-md-12 row filaNotas'>";
-                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe'";}else{echo"'";}echo">Física</p><input name='primF' type='text' value='".$infoEvaluacion[8]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='segF' type='text' value='".$infoEvaluacion[9]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='terF' type='text' value='".$infoEvaluacion[10]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='nfF' type='text' value='".$infoEvaluacion[11]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='obsF' type='text' value='".$infoEvaluacion[12]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
+                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe'";}else{echo"'";}echo">Física</p><input id='e5' name='primF' type='number' value='".$infoEvaluacion[8]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e6' name='segF' type='number' value='".$infoEvaluacion[9]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e7' name='terF' type='number' value='".$infoEvaluacion[10]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e8' name='nfF' type='number' value='".$infoEvaluacion[11]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='o2' name='obsF' type='text' value='".$infoEvaluacion[12]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="fisica"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
                 
                 echo"<div id='notasIng' class='col-md-12 row filaNotas'>";
-                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe'";}else{echo"'";}echo">Inglés</p><input name='primI' type='text' value='".$infoEvaluacion[13]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='segI' type='text' value='".$infoEvaluacion[14]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='terI' type='text' value='".$infoEvaluacion[15]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='nfI' type='text' value='".$infoEvaluacion[16]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='obsI' type='text' value='".$infoEvaluacion[17]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
+                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe'";}else{echo"'";}echo">Inglés</p><input id='e9' name='primI' type='number' value='".$infoEvaluacion[13]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e10' name='segI' type='number' value='".$infoEvaluacion[14]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e11' name='terI' type='number' value='".$infoEvaluacion[15]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e12' name='nfI' type='number' value='".$infoEvaluacion[16]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='o3' name='obsI' type='text' value='".$infoEvaluacion[17]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="ingles"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
                 
                 echo"<div id='notasLen' class='col-md-12 row filaNotas'>";
-                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe'";}else{echo"'";}echo">Lengua Castellana</p><input name='primL' type='text' value='".$infoEvaluacion[18]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='segL' type='text' value='".$infoEvaluacion[19]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='terL' type='text' value='".$infoEvaluacion[20]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='nfL' type='text' value='".$infoEvaluacion[21]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='obsL' type='text' value='".$infoEvaluacion[22]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
+                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe'";}else{echo"'";}echo">Lengua Castellana</p><input id='e13' name='primL' type='number' value='".$infoEvaluacion[18]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e14' name='segL' type='number' value='".$infoEvaluacion[19]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e15' name='terL' type='number' value='".$infoEvaluacion[20]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e16' name='nfL' type='number' value='".$infoEvaluacion[21]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='o4' name='obsL' type='text' value='".$infoEvaluacion[22]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="lengua"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
                 
                 echo"<div id='notasGeo' class='col-md-12 row filaNotas'>";
-                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe'";}else{echo"'";}echo">Geografía Historia</p><input name='primG' type='text' value='".$infoEvaluacion[23]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='segG' type='text' value='".$infoEvaluacion[24]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='terG' type='text' value='".$infoEvaluacion[25]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='nfG' type='text' value='".$infoEvaluacion[26]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='obsG' type='text' value='".$infoEvaluacion[27]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
+                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe'";}else{echo"'";}echo">Geografía Historia</p><input id='e17' name='primG' type='number' value='".$infoEvaluacion[23]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e18' name='segG' type='number' value='".$infoEvaluacion[24]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e19' name='terG' type='number' value='".$infoEvaluacion[25]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e20' name='nfG' type='number' value='".$infoEvaluacion[26]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='o5' name='obsG' type='text' value='".$infoEvaluacion[27]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="geografia historia"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
                 
                 echo"<div id='notasMat' class='col-md-12 row filaNotas'>";
-                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe'";}else{echo"'";}echo">Matemáticas</p><input name='primM' type='text' value='".$infoEvaluacion[28]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='segM' type='text' value='".$infoEvaluacion[29]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='terM' type='text' value='".$infoEvaluacion[30]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='nfM' type='text' value='".$infoEvaluacion[31]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe' readonly";}else{echo"'";}echo">"
-                        . "<input name='obsM' type='text' value='".$infoEvaluacion[32]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
+                echo"<p class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe'";}else{echo"'";}echo">Matemáticas</p><input id='e21' name='primM' type='number' value='".$infoEvaluacion[28]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e22' name='segM' type='number' value='".$infoEvaluacion[29]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e23' name='terM' type='number' value='".$infoEvaluacion[30]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='e24' name='nfM' type='number' value='".$infoEvaluacion[31]."' class='col-md-2 ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe' readonly";}else{echo"'";}echo">"
+                        . "<input id='o6' name='obsM' type='text' value='".$infoEvaluacion[32]."' class='col-md-2 observaciones ";if($_SESSION["Tipo"]!="Admin"&&$asignaturaProfe!="matematicas"){echo"noProfe' readonly";}else{echo"'";}echo"></div>";
                 
                 //Dos botones para guardar los cambios o salir.
                 echo"<div id='guardarSalir' class='col-md-12 row'>";
@@ -266,7 +246,7 @@
                 echo"<input id='tipoAlumnoLen' class='oculto' name='tipoAlumnoLen' type='text' value='".$tipoAlumnoLen."'>";
                 echo"</form>";
                 echo"</div>";
-                
+                echo"<p class='fraseValidacion' id='fraseV'></p>";
                 
             }
             
@@ -280,6 +260,7 @@
         echo"<button type='button' class='offset-md-5 btn-info col-md-2 bot sal'><a href='MenuDeOpciones.php'>Salir</a></button>";
         include("comunes/pieDePagina.html");
         ?>
+        <script type="text/javascript" src="javascript/validaAsignatura.js"></script>
          <script type="text/javascript" src="librerías/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="librerías/bootstrap.min.js"></script>
     </body>

@@ -38,13 +38,14 @@ body{
 #footer{
     background-color:rgba(81,160,173,0.7);
     box-shadow: 1px 1px 3px 1px #ffffff;
-    margin-top:10px;
+    margin-top:20px;
     font-size:15px;
   font-weight:bold;
    color:white;
   text-shadow:2px 1px 2px black;
   height:10px;
   align-content:center;
+  
   
 }
 
@@ -123,4 +124,14 @@ body{
     text-decoration:none;
     border-radius:15px;
     margin-top:10px;
+}
+.fraseValidacion{
+ font-size:20px;
+    color:white;
+  text-shadow:2px 1px 2px black;
+}
+
+
+#fraseFooter{
+  padding-top:10px;
 }

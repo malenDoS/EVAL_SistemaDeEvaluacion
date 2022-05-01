@@ -12,11 +12,12 @@ class Alumnos{
     private $tutor;
             
     function __construct(){
+        //Creo la conexión PDO.
         $this->conexion=new PDO("mysql:host=localhost; dbname=eval","root","nloeig31416");
         $this->conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     }
     
-    
+    //Función que consulta el nombre, apellido e id de todos los alumnos.
      function getAlumno(){
         $consulta="SELECT nombre,apellido,id_alumno FROM alumnos";
         //Creo una instancia de la clase base de datos.
@@ -26,6 +27,7 @@ class Alumnos{
         return $alumnado;
     }
     
+    //Función que consulta la información del alumno según el id.
     function getFormulario($idA){
         $consulta="SELECT * FROM alumnos WHERE id_alumno=".$idA;
         //Creo una instancia de la clase base de datos.
@@ -39,9 +41,11 @@ class Alumnos{
         $datosFormulario[3]=$fila["contactoPadre"];
         $datosFormulario[4]=$fila["direccion"];
         $datosFormulario[5]=$fila["id_alumno"];
+        $datosFormulario[6]=$fila["tutor"];
         return $datosFormulario;
     }
     
+    //Función que consulta los posibles tutores de los alumnos.
     function tutor(){
        
     $consulta="SELECT nombre,apellido FROM personal";
@@ -51,6 +55,7 @@ class Alumnos{
 
     }
     
+    //Función que consulta las posibles clases de los alumnos.
     function getClases(){
         $consulta="SELECT DISTINCT clase FROM alumnos";
         $baseDatos=new BaseDatos($this->conexion);
@@ -64,6 +69,7 @@ class Alumnos{
         return $datosClase;
     }
     
+    //Función que guarda la información del alumno según el formulario de modificación.
     function guardarModificaciones($nombre,$apellido,$clase,$contactoPadre,$direccion,$tutor,$idA){
         $this->nombre=htmlentities(addslashes($nombre));
         $this->apellido=htmlentities(addslashes($apellido));
@@ -89,7 +95,7 @@ class Alumnos{
         return $mensaje;
     }
     
-    
+    //Función que borra la información del alumno.
     function borrarAlumno($idB){
         $this->id=$idB;
          $baseDatos=new BaseDatos($this->conexion);
@@ -97,6 +103,7 @@ class Alumnos{
         return $mensaje;
     }
     
+    //Función que añade la información del alumno a la tabla alumnos y a cada una de las asignaturas.
     function anadirAlumno($nombre,$apellido,$clase,$contacto,$direccion,$tutor){
         $this->nombre=htmlentities(addslashes($nombre));
         $this->apellido=htmlentities(addslashes($apellido));

@@ -133,3 +133,12 @@ body{
     border-radius:15px;
     margin-top:10px;
 }
+.fraseValidacion{
+ font-size:20px;
+    color:white;
+  text-shadow:2px 1px 2px black;
+}
+
+#fraseFooter{
+  padding-top:10px;
+}

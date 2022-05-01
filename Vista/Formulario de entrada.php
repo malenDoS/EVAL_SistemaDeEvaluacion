@@ -1,11 +1,12 @@
 
 <html>
     <head>
-        <title>TODO supply a title</title>
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="librerías/bootstrap.min.css">
         <link rel="stylesheet" href="css/estiloFormulario.css">
+        <title>Formulario de entrada</title>
     </head>
     <body class="container">
         <!--Contenedor principal-->
@@ -32,7 +33,7 @@
                 <div class="input-group">
                 <label for="contrasegna" class="form-control">Contraseña</label><input id="contra" type="password" class="form-control" name="contrasegna">
                 </div>
-                <input type="submit" id="login" name="enviar" class="form-control"><label for="sesion"  class="recordar">Recordar:</label> <input type="checkbox" id="recordar">
+                <input type="submit" id="login" name="enviar" class="form-control">
                 <p id="fraseValidacion"><?php if(isset($_GET["datos"])){
                 echo"Datos no encontrados";}?></p>
                 

@@ -94,7 +94,7 @@ class BaseDatos{
         }
         
         if($_SESSION["Tipo"]=="Admin"){
-        header("location:../Vista/PerfilPersonal.php?us=".$datos[4]."&me=".$mensaje."");
+        header("location:../Vista/PerfilPersonal.php?us=".$datos[8]."&me=".$mensaje."");
         }else{
             header("location:../Vista/PerfilPersonal.php?me=".$mensaje."");
         }
@@ -386,6 +386,14 @@ class BaseDatos{
         }
     }
     
+    function getIds($consulta){
+        $numeroIds=$this->conexion->query($consulta);
+        if($numeroIds->rowCount()>0){
+            return $numeroIds;
+        }else{
+            return "No";
+        }
+    }
 }
 
 

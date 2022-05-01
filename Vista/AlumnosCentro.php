@@ -92,13 +92,13 @@
             $clases=$alumno->getClases();
             
             //Imprimo el formulario.
-            echo"<form class='row' action='".$_SERVER["PHP_SELF"]."' method='POST'>";
+            echo"<form class='row' action='".$_SERVER["PHP_SELF"]."' method='POST' id='formularioM'>";
             echo"<div class='row col-md-12 contenedorA'><label for='nombre' class='offset-md-4 col-md-1 labelA'>Nombre: </label><input type='text' class='col-md-2 aInput' id='nombreA' name='nombreA' value='$formulario[0]'></div>";
              echo"<div class='row col-md-12 contenedorA'><label for='apellido' class='offset-md-4 col-md-1 labelA'>Apellidos: </label><input type='text' class='col-md-2 aInput' id='apellidoA' name='apellidoA' value='$formulario[1]'></div>";
-              echo"<div class='row col-md-12 contenedorA'><label for='clase' class='offset-md-4 col-md-1 labelA'>Clase: </label><select class='col-md-2 aInput' id='claseA' name='claseA'><option>Selecciona una opción</option>";for($i=0;$i<count($clases);$i++){echo"<option value='$clases[$i]'>".$clases[$i]."</option>";}echo"</select></div>";
-               echo"<div class='row col-md-12 contenedorA'><label for='ContactoP' class='offset-md-4 col-md-1 labelA'>Contacto Padre: </label><input type='text' class='col-md-2 aInput' id='contactoP' name='contactoP' value='$formulario[3]'></div>";
+              echo"<div class='row col-md-12 contenedorA'><label for='clase' class='offset-md-4 col-md-1 labelA'>Clase: </label><select class='col-md-2 aInput' id='claseA' name='claseA'><option value='$formulario[2]'>".$formulario[2]."</option>";for($i=0;$i<count($clases);$i++){echo"<option value='$clases[$i]'>".$clases[$i]."</option>";}echo"</select></div>";
+               echo"<div class='row col-md-12 contenedorA'><label for='ContactoP' class='offset-md-4 col-md-1 labelA'>Contacto Padre: </label><input type='number' class='col-md-2 aInput' id='contactoP' name='contactoP' value='$formulario[3]'></div>";
                 echo"<div class='row col-md-12 contenedorA'><label for='Dirección' class='offset-md-4 col-md-1 labelA'>Dirección: </label><input type='text' class='col-md-2 aInput' id='direccionA' name='direccionA' value='$formulario[4]'></div>";
-                 echo"<div class='row col-md-12 contenedorA'><label for='tutor' class='offset-md-4 col-md-1 labelA'>tutor: </label><select class='col-md-2 aInput' id='tutorA' name='tutorA'><option>Selecciona una opción</option>";while($fila=$tutores->fetch(PDO::FETCH_ASSOC)){echo"<option value='".$fila["nombre"]." ".$fila["apellido"]."'>";echo$fila["nombre"]." ".$fila["apellido"]."</option>";}echo"</select></div>";
+                 echo"<div class='row col-md-12 contenedorA'><label for='tutor' class='offset-md-4 col-md-1 labelA'>tutor: </label><select class='col-md-2 aInput' id='tutorA' name='tutorA'><option value='$formulario[6]'>".$formulario[6]."</option>";while($fila=$tutores->fetch(PDO::FETCH_ASSOC)){echo"<option value='".$fila["nombre"]." ".$fila["apellido"]."'>";echo$fila["nombre"]." ".$fila["apellido"]."</option>";}echo"</select></div>";
                  echo"<div class='oculto'><input type='text' class='col-md-2 aInput' id='idAlumno' name='idAl' value='$formulario[5]'></div>";
                  echo"<div class='row col-md-12'><input type='submit' value='Guardar datos' class='offset-md-4 col-md-4 aInput btn-info' id='guardarD' name='guardarD'></div>";
             echo"</form>";
@@ -161,13 +161,13 @@
                 $clases2=$alumno4->getClases();
                 
                 //Imprimo el formulario para añadir un alumno.
-                 echo"<form class='row' action='".$_SERVER["PHP_SELF"]."' method='POST'>";
+                 echo"<form class='row' action='".$_SERVER["PHP_SELF"]."' method='POST' id='formularioA'>";
             echo"<div class='row col-md-12 contenedorA'><label for='nombre' class='offset-md-4 col-md-1 labelA'>Nombre: </label><input type='text' class='col-md-2 aInput' id='Anombre' name='Anombre'></div>";
              echo"<div class='row col-md-12 contenedorA'><label for='apellido' class='offset-md-4 col-md-1 labelA'>Apellidos: </label><input type='text' class='col-md-2 aInput' id='Aapellido' name='Aapellido'></div>";
-              echo"<div class='row col-md-12 contenedorA'><label for='clase' class='offset-md-4 col-md-1 labelA'>Clase: </label><select class='col-md-2 aInput' id='Aclase' name='Aclase'><option>Selecciona una opción</option>";for($i=0;$i<count($clases2);$i++){echo"<option value='$clases2[$i]'>".$clases2[$i]."</option>";}echo"</select></div>";
+              echo"<div class='row col-md-12 contenedorA'><label for='clase' class='offset-md-4 col-md-1 labelA'>Clase: </label><select class='col-md-2 aInput' id='Aclase' name='Aclase'><option value=''>Selecciona una opción</option>";for($i=0;$i<count($clases2);$i++){echo"<option value='$clases2[$i]'>".$clases2[$i]."</option>";}echo"</select></div>";
                echo"<div class='row col-md-12 contenedorA'><label for='ContactoP' class='offset-md-4 col-md-1 labelA'>Contacto Padre: </label><input type='text' class='col-md-2 aInput' id='Acontacto' name='Acontacto'></div>";
                 echo"<div class='row col-md-12 contenedorA'><label for='Dirección' class='offset-md-4 col-md-1 labelA'>Dirección: </label><input type='text' class='col-md-2 aInput' id='Adireccion' name='Adireccion'></div>";
-                 echo"<div class='row col-md-12 contenedorA'><label for='tutor' class='offset-md-4 col-md-1 labelA'>tutor: </label><select class='col-md-2 aInput' id='Atutor' name='Atutor'><option>Selecciona una opción</option>";while($fila=$tutores2->fetch(PDO::FETCH_ASSOC)){echo"<option value='".$fila["nombre"]." ".$fila["apellido"]."'>";echo$fila["nombre"]." ".$fila["apellido"]."</option>";}echo"</select></div>";
+                 echo"<div class='row col-md-12 contenedorA'><label for='tutor' class='offset-md-4 col-md-1 labelA'>tutor: </label><select class='col-md-2 aInput' id='Atutor' name='Atutor'><option value=''>Selecciona una opción</option>";while($fila=$tutores2->fetch(PDO::FETCH_ASSOC)){echo"<option value='".$fila["nombre"]." ".$fila["apellido"]."'>";echo$fila["nombre"]." ".$fila["apellido"]."</option>";}echo"</select></div>";
                  echo"<div class='row col-md-12'><input type='submit' value='Añadir alumno' class='offset-md-4 col-md-4 aInput btn-info' id='anadirA' name='anadirA'></div>";
             echo"</form>";
                 
@@ -177,12 +177,16 @@
         ?>
         </div>
         <?php
+        echo"<p class='fraseValidacion' id='fraseV'></p>";
         echo"<button type='button' class='offset-md-5 btn-info col-md-2 bot'><a href='MenuDeOpciones.php'>Salir</a></button>";
-        include("comunes/pieDePagina.html");
+       
         }else{
             header("location:Formulario de entrada.php");
         }
-        ?>}
+   
+         include("comunes/pieDePagina.html");
+        ?>
+        <script type="text/javascript" src="javascript/validarAlumno.js"></script>
         <script type="text/javascript" src="librerías/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="librerías/bootstrap.min.js"></script>
     </body>
